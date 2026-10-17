@@ -1,0 +1,4 @@
+# Pinned to the versions the notebook installs in its first dependency cell.
+langchain==0.3.26
+langchain-openai==0.3.28
+PyPDF2==3.0.1

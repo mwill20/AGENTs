@@ -17,6 +17,10 @@ venv/
 *.jsonl
 .cache/
 cache/
+*.db
+*.sqlite
+*.sqlite3
+eda_workspace/
 
 # OS / editor
 .DS_Store

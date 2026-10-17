@@ -6,6 +6,53 @@ distributor**.
 
 **Deliverable:** `Logistics_Optimization_Crew.ipynb` (runs end to end in Google Colab)
 
+## Purpose
+
+This assignment demonstrates a multi-agent CrewAI workflow with deterministic guardrails around
+it. It solves "turn a list of products into a ranked, costed inventory strategy" by computing the
+numbers in plain Python, then asking two agents for the parts a rule cannot do: interpretation
+and recommendation.
+
+## Intended audience
+
+Learners comparing agent roles, task dependencies and `{placeholder}` parametrization in CrewAI,
+and anyone who wants an example of keeping arithmetic and classification out of the LLM.
+
+Expected background: intermediate Python, and a rough idea of what inventory turnover means.
+
+## Project status
+
+Prototype / coursework deliverable. The notebook was run end to end by the author and behaved as
+expected. The saved outputs come from that run. The notebook's live cells were **not** re-run
+during repository preparation; `verify_assignment.py` was (see Verification).
+
+## Requirements
+
+| Requirement | Notes |
+|---|---|
+| Python | Not stated in the notebook. Written for Google Colab |
+| Packages | `crewai==1.15.20` (pinned in `requirements.txt`; bundles `crewai-tools`, `litellm` and the OpenAI client) |
+| LLM | OpenAI (**paid, pay-as-you-go**), default model `gpt-4o-mini` |
+| Optional search | `SERPER_API_KEY`, off by default. The intended path uses the supplied dataset only |
+| Data | A synthetic 10-SKU catalog defined inside the notebook. No external dataset |
+
+## Agent safety boundaries
+
+This crew is allowed to:
+
+- Read the metrics table and the resolved product list handed to it in the task text
+- Run each agent for at most `max_iter=5` iterations and `max_execution_time=180` seconds
+
+This crew is not allowed to:
+
+- Delegate work (`allow_delegation=False`)
+- Receive free text from the caller. The caller's string only selects a catalog entry, and the
+  catalog's own canonical name goes into the prompt
+- Name SKUs that were not requested. The output gate checks this
+
+Human approval is required for: acting on the strategy. The crew only produces text, so nothing is
+executed automatically.
+
 ---
 
 ## What it does
@@ -123,6 +170,10 @@ with crewai installed:     76/76 checks passed
 standard library only:     67/67 checks passed (9 CREW checks skipped)
 ```
 
+**Re-run during repository preparation** (Python 3.12, no API key, no network): 67 of 67 with the
+standard library only, and 76 of 76 in a fresh virtualenv with `crewai==1.15.20` installed from
+`requirements.txt`. `kickoff()` was never called, so the live agent runs were not repeated.
+
 ## Files
 
 | File | Purpose |
@@ -139,3 +190,15 @@ measured against average on-hand units rather than COGS over average inventory v
 window annualised by `365/90` carries no seasonality; the output gate checks scope but not
 whether recommended stock targets respect the lead-time floor; and there is no holding-cost /
 ordering-cost / stockout-cost model behind the capital estimates.
+
+## Security considerations
+
+See [SECURITY.md](SECURITY.md). The inline "Security notes" section above explains the catalog-resolution design in detail.
+
+## License
+
+MIT. See the repository-root [LICENSE](../LICENSE).
+
+## Support
+
+Open an issue on the repository. Report security problems as described in [SECURITY.md](SECURITY.md).

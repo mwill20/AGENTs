@@ -1,0 +1,20 @@
+# The course examples pin autogen-agentchat==0.2.38. That pin no longer installs: every 0.2.x
+# release caps at Requires-Python <3.13, and Colab now runs Python 3.13.
+#
+# ag2 is the community fork that continued the AutoGen 0.2 line. It imports as `autogen` and
+# exposes the same AssistantAgent / UserProxyAgent / GroupChat API the course teaches.
+# Supported Python for this release: >=3.10,<3.14.
+#
+# Both halves of this pin matter. ag2 1.x is another ground-up rewrite with a different API
+# (ag2.Agent, Task, Toolkit) and will NOT run this notebook. Do not float it.
+ag2[openai]==0.9.10
+
+# ag2's [openai] extra asks only for openai>=1.99.3 with no upper bound, so a future openai 4.x
+# could break the client underneath a pinned ag2. Verified against openai 3.13.0.
+openai<4
+
+# Preinstalled in Google Colab; listed for local runs. Deliberately unpinned - forcing a
+# reinstall of these in Colab destabilises the runtime for no benefit.
+pandas
+numpy
+matplotlib

@@ -1,0 +1,14 @@
+# Assignment 12 - LangGraph math agent
+# Versions resolved and tested together on Python 3.12; `pip check` reports no conflicts.
+# The notebook installs only ONE of the three provider packages, chosen by whichever key is present.
+
+langgraph==1.2.11
+langchain-core==1.6.3
+
+# Pick the one matching your API key (the notebook does this automatically).
+langchain-groq==1.1.3            # GROQ_API_KEY
+langchain-google-genai==4.4.0    # GOOGLE_API_KEY
+langchain-openai==1.6.2          # OPENAI_API_KEY
+
+# Provided by Colab; needed only for the inline graph image when running locally.
+ipython==9.17.1

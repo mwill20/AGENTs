@@ -4,6 +4,36 @@ Six AutoGen agents collaborate to take a messy dataset from raw CSV to a finishe
 critic-reviewed EDA report — with a deterministic security gate in front of every line of code
 the agents write.
 
+## Purpose
+
+This assignment demonstrates a multi-agent AutoGen workflow in which an LLM writes Python and the
+notebook runs it, and shows what it takes to do that safely. It solves "take a messy dataset to a
+critic-reviewed EDA report" with six agents, a turn order decided by plain Python instead of an LLM,
+a static code gate in front of the executor, and output and data validators behind it.
+
+## Intended audience
+
+Learners and reviewers interested in agentic code execution, AutoGen's group chat, and how to bound
+an agent that writes code.
+
+Expected background: intermediate Python, pandas basics, and an OpenAI API key.
+
+## Project status
+
+Prototype / coursework deliverable. The notebook was run end to end by the author and behaved as
+expected. During repository preparation, `verify_assignment.py` and `test_pipeline.py` were re-run
+(see Verification); the six-agent LLM run was **not** repeated.
+
+## Requirements
+
+| Requirement | Notes |
+|---|---|
+| Python | `>=3.10,<3.14` (the `ag2` 0.9.10 constraint). Colab currently runs 3.13 |
+| Packages | `ag2[openai]==0.9.10` and `openai<4` pinned in `requirements.txt`; pandas, numpy and matplotlib are left to Colab's preinstalled versions |
+| LLM | OpenAI (**paid, pay-as-you-go**), `gpt-4o-mini` |
+| Data | A synthetic dataset generated inside the notebook with a fixed seed. No external dataset |
+| Environment | Google Colab. Running locally needs `python` on `PATH` to have pandas and matplotlib |
+
 | File | What it is |
 |---|---|
 | `EDA_MultiAgent_AutoGen.ipynb` | **The deliverable.** Runs end to end in Google Colab. |
@@ -134,7 +164,17 @@ This loads the notebook's real agents and state machine and plays scripted trans
 and a check that the critic is never routed to the executor. It needs `autogen` installed but
 makes no model call.
 
-Current status: **45 verification checks passed, 0 failed. All orchestration tests passed**, run on Python 3.13.5 with `ag2==0.9.10` — the same Python major/minor Colab uses.
+Status recorded by the author: **45 verification checks passed, 0 failed. All orchestration tests passed**, run on Python 3.13.5 with `ag2==0.9.10`, the same Python major/minor Colab uses. That figure predates later additions; `verify_assignment.py` now has 55 checks.
+
+### Re-run during repository preparation
+
+| Script | Environment | Result |
+|---|---|---|
+| `verify_assignment.py` | Python 3.12, standard library only | 55 passed, 0 failed |
+| `test_pipeline.py` | Python 3.12, fresh virtualenv, `ag2[openai]==0.9.10`, `openai` 3.33.0, no API key, no model call | All orchestration tests passed |
+
+Python 3.12 is inside the `>=3.10,<3.14` range that `ag2` 0.9.10 supports. The six-agent LLM run was
+not repeated.
 
 ---
 
@@ -186,3 +226,17 @@ out to has no matplotlib. Colab ships matplotlib, so the agents produce charts t
   before pip runs and says what to do if Colab moves past 3.13.
 - **Reproducibility.** `temperature=0` and `cache_seed=42` make re-runs cheap and close to
   deterministic, but LLM output is never byte-identical across model versions.
+
+---
+
+## Security considerations
+
+See [SECURITY.md](SECURITY.md). The "security design" section above is the detailed explanation.
+
+## License
+
+MIT. See the repository-root [LICENSE](../LICENSE).
+
+## Support
+
+Open an issue on the repository. Report security problems as described in [SECURITY.md](SECURITY.md).

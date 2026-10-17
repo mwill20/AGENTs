@@ -1,0 +1,4 @@
+# Pinned to the versions in the notebook's install cell.
+# These are the AutoGen 0.4+ packages. They are NOT compatible with the legacy pyautogen / autogen 0.2 packages.
+autogen-agentchat==0.7.5
+autogen-ext[openai]==0.7.5

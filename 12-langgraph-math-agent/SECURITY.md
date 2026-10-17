@@ -85,4 +85,5 @@ audit record afterwards. The audit log answers "what happened"; it does not prev
 
 ## Reporting
 
-This is coursework in a private repository. Security questions go to the repository owner.
+This is coursework. Open a GitHub issue on this repository, or for anything sensitive contact the
+maintainer through the GitHub profile at https://github.com/mwill20.

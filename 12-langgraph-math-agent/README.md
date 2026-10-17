@@ -134,10 +134,34 @@ Check each vendor's *deprecations* page, not its models page — Groq's models p
 ## Files
 
 ```
-Assignment 12/
+12-langgraph-math-agent/
 ├── LangGraph_Math_Agent.ipynb   # the deliverable
 ├── README.md
 ├── SECURITY.md
-├── requirements.txt
-└── Assignment_Building Advanced AI Agents with LangGraph.pdf
+└── requirements.txt
 ```
+
+The assignment brief PDF is course material and is not included in this repository.
+
+## Project status
+
+Prototype / coursework deliverable. The notebook was run end to end by the author and behaved as
+expected. The recorded test status above (§9a, 25 of 25) comes from the author's run. Neither the
+notebook nor its tests were re-run during repository preparation.
+
+## Requirements
+
+| Requirement | Notes |
+|---|---|
+| Python | 3.12 per the recorded test status. Colab also works |
+| Packages | Pinned in `requirements.txt`: `langgraph`, `langchain-core`, and one provider package |
+| LLM | One of Groq or Google (free tiers), or OpenAI (paid). Model availability changes; see the limitations note |
+| Environment | Google Colab recommended, or local with an API key in the environment |
+
+## License
+
+MIT. See the repository-root [LICENSE](../LICENSE).
+
+## Support
+
+Open an issue on the repository. Report security problems as described in [SECURITY.md](SECURITY.md).

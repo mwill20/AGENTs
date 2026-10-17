@@ -22,7 +22,9 @@ Expected background: basic Python, and a rough idea of what a REST endpoint is.
 
 Prototype / coursework deliverable. The notebook was run end to end by the author and behaved as
 expected. The saved outputs come from that run. It was **not** re-run during repository
-preparation.
+preparation. One saved-output line, a library warning that printed a local file path containing a
+Windows username, had that path prefix replaced with `<python-install>`. Nothing else in the
+notebook was changed.
 
 ## What's here
 

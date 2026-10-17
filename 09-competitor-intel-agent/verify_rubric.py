@@ -104,7 +104,8 @@ def main() -> int:
          nb.get("nbformat") == 4
          and "colab" in nb.get("metadata", {})
          and "google.colab" in code
-         and "!pip install -q langchain==0.3.14" in code
+         and "pip install -q" in code
+         and "langchain==0.3.14" in code
          and syntax_ok),
 
         ("S1", "no hardcoded secrets",

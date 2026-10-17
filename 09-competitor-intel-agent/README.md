@@ -6,6 +6,37 @@ search tool.
 
 **Deliverable:** `Competitor_Intel_Agent.ipynb` (runnable in Google Colab)
 
+## Purpose
+
+This assignment demonstrates a conversational tool-calling agent with per-session memory and
+guardrails on both ends. It solves "let a store owner ask follow-up questions about nearby
+competitors and get a structured, sourced report" by combining two read-only search tools, a
+SQLite-backed chat history, deterministic input gates ahead of the model, and an output check that
+every cited URL actually came from a tool result.
+
+## Intended audience
+
+Learners who want to see an agent built with guardrails from the start: input validation before the
+LLM, a memory-key check, bounded loops, and a grounding check on the output.
+
+Expected background: intermediate Python, and familiarity with LangChain agents.
+
+## Project status
+
+Prototype / coursework deliverable. The notebook was run end to end by the author and behaved as
+expected. The three offline suites listed under Verification were run during repository
+preparation. The live agent cells were **not** re-run.
+
+## Requirements
+
+| Requirement | Notes |
+|---|---|
+| Python | Not stated in the notebook. The offline suites were run on Python 3.12 |
+| Packages | Pinned in `requirements.txt` (`langchain`, `langchain-openai`, `langchain-community`, `requests`) |
+| LLM | OpenAI `gpt-4o` (**paid, pay-as-you-go**) |
+| Search | Tavily API key (free tier) |
+| Environment | Written for Google Colab. Memory is a local SQLite file, `competitor_memory.db` |
+
 ## Agentic pattern
 
 **Tool Use + Conversational Memory** - a LangChain tool-calling agent
@@ -52,6 +83,25 @@ grounding check - is the deliverable's code, executed.
 **Not executed here:** the live agent cells (sections 10 and 11), which need both API keys and
 network access. Run them in Colab.
 
+To reproduce the three results above, use a virtual environment so the pinned versions do not touch
+your system Python:
+
+```bash
+git clone https://github.com/mwill20/AGENTs.git
+cd AGENTs/09-competitor-intel-agent
+python -m venv .venv
+source .venv/bin/activate     # macOS/Linux
+# .venv\Scripts\Activate.ps1  # Windows PowerShell
+pip install -r requirements.txt
+python verify_rubric.py && python test_guardrails.py && python test_pipeline.py
+```
+
+**Note on `verify_rubric.py`.** Its R11 check originally looked for the literal string
+`!pip install -q langchain==0.3.14`. The notebook's install cell later changed to
+`uv pip install`, so R11 failed (20 of 21) even though the notebook still pins that version. The
+check now looks for `pip install -q` and `langchain==0.3.14` separately. That is the only change to
+a code file in this folder; compare against the `raw-import` tag to see it.
+
 ## Files
 
 | File | What it is |
@@ -86,3 +136,15 @@ carry the label through. Measured footfall would mean a paid provider (Placer.ai
 store's own POS and door-counter data.
 
 Section 16 of the notebook states this and six other limitations in full.
+
+## Security considerations
+
+See [SECURITY.md](SECURITY.md).
+
+## License
+
+MIT. See the repository-root [LICENSE](../LICENSE).
+
+## Support
+
+Open an issue on the repository. Report security problems as described in [SECURITY.md](SECURITY.md).

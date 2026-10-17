@@ -93,9 +93,10 @@ ns = {
     "LLM_MODEL": "stub-model",
 }
 
-# Skip cell 0 (pip install) and cell 1 (config: reads env vars, builds real clients).
+# Skip the pip install and every cell that needs Google Colab (key retrieval and real client
+# construction). Matching on content rather than position keeps this working when cells are added.
 for index, cell in enumerate(code_cells):
-    if index < 2:
+    if cell.lstrip().startswith("!pip") or "google.colab" in cell:
         continue
     exec(compile(cell, f"<cell {index}>", "exec"), ns)
 

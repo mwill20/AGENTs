@@ -1,0 +1,5 @@
+# Pinned to the versions in the notebook's install cell ("checked October 2026" in the notebook).
+langgraph==1.2.13
+langchain-core==1.6.6
+langchain-openai==1.6.7
+langchain-tavily==0.2.18

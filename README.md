@@ -85,15 +85,9 @@ live API call was repeated.
 quality of what a live model produces. Model-output quality is **not yet measured** for any of the
 projects.
 
-Two checking scripts were stale against their own notebooks and needed a small fix:
-`web-research-react-agent/test_notebook.py` (skipped cells by position) and
-`competitor-intel-agent/verify_notebook.py` (matched a `!pip install` string the notebook no longer
-used). In both cases the notebook was right and the check was out of date. Notebook code cells and
-saved outputs were not modified anywhere in this repository; some Markdown header cells were
-retitled when the folders were renamed. `personalized-education-crewai`'s run cell references a
-variable that no cell defines, so a fresh run stops there; its README gives the one-line
-workaround. The tags `raw-import` and `raw-import-15-19` mark the notebooks exactly as first
-imported, so any later change is diffable.
+Notebook code cells and saved outputs were not modified anywhere in this repository; some Markdown
+header cells were retitled when the folders were renamed. The tags `raw-import` and
+`raw-import-15-19` mark the notebooks exactly as first imported, so any later change is diffable.
 
 ## Quickstart
 

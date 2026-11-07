@@ -1,0 +1,4 @@
+# Pinned to the version in the notebook's install cell (installed there with uv).
+# AG2 1.x is the protocol-driven API (`from ag2 import Agent, tool`). The classic
+# `autogen.*` classes used in the AG2 Classic examples live in the separate `ag2-classic` package.
+ag2[openai]==1.1.2

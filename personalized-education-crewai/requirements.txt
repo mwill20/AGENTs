@@ -1,0 +1,5 @@
+# Pinned to the version in the notebook's install cell.
+# The [tools] extra brings in crewai-tools (SerperDevTool). The notebook imports it but
+# leaves web search disabled; see the README.
+# CrewAI 1.15.x requires Python >=3.10,<3.14.
+crewai[tools]==1.15.33

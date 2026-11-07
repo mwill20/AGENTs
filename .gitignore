@@ -21,6 +21,10 @@ cache/
 *.sqlite
 *.sqlite3
 eda_workspace/
+sample_bills/
+my_bills/
+not_an_image.txt
+education_plan.json
 
 # OS / editor
 .DS_Store

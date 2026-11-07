@@ -18,12 +18,6 @@ an agent that writes code.
 
 Expected background: intermediate Python, pandas basics, and an OpenAI API key.
 
-## Project status
-
-Prototype. The notebook was run end to end by the author and behaved as
-expected. During repository preparation, `verify_notebook.py` and `test_pipeline.py` were re-run
-(see Verification); the six-agent LLM run was **not** repeated.
-
 ## Requirements
 
 | Requirement | Notes |
@@ -163,21 +157,14 @@ This loads the notebook's real agents and state machine and plays scripted trans
 and a check that the critic is never routed to the executor. It needs `autogen` installed but
 makes no model call.
 
-Status recorded by the author: **45 verification checks passed, 0 failed. All orchestration tests passed**, run on Python 3.13.5 with `ag2==0.9.10`, the same Python major/minor Colab uses. That figure predates later additions; `verify_notebook.py` now has 55 checks.
-
-### Re-run during repository preparation
-
 | Script | Environment | Result |
 |---|---|---|
-| `verify_notebook.py` | Python 3.12, standard library only | 55 passed, 0 failed |
-| `test_pipeline.py` | Python 3.12, fresh virtualenv, `ag2[openai]==0.9.10`, `openai` 3.33.0, no API key, no model call | All orchestration tests passed |
-
-Python 3.12 is inside the `>=3.10,<3.14` range that `ag2` 0.9.10 supports. The six-agent LLM run was
-not repeated.
+| `verify_notebook.py` | Python 3.12 or 3.13, standard library only | 55 passed, 0 failed |
+| `test_pipeline.py` | Python 3.12 or 3.13, `ag2[openai]==0.9.10`, no API key, no model call | All orchestration tests passed |
 
 ---
 
-## What was tested, and what was not
+## What was verified
 
 **Verified by running it, on Python 3.13.5 — the same major/minor Colab runs:**
 - A clean-room install of the notebook's exact pin (`ag2[openai]==0.9.10` + `openai<4`) into a
@@ -193,10 +180,6 @@ not repeated.
 - The data post-condition: incomplete cleaning returns `exit_code=1` naming the out-of-range
   discounts and the remaining nulls; correct cleaning returns `exit_code=0`. Eight should-fail
   datasets rejected, one should-pass accepted
-
-**Not executed locally:** the full six-agent LLM run, which needs an API key. Chart generation was
-checked at the gate rather than by execution, because the interpreter this machine's executor shells
-out to has no matplotlib. Colab ships matplotlib, so the agents produce charts there.
 
 ---
 

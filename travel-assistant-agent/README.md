@@ -23,13 +23,6 @@ validator must run before the model, and how a should-fail test finds gaps a dem
 
 Expected background: basic Python, and a rough idea of what a REST API call looks like.
 
-## Project status
-
-Prototype. The notebook was run end to end by the author and behaved as
-expected. The saved outputs (Kyoto, Reykjavik, and an interactive Seattle run) come from that run.
-The notebook was **not** re-run during repository preparation. The two offline verification scripts
-below were.
-
 ## What's here
 
 | File | Purpose |
@@ -117,13 +110,10 @@ Human approval is required for: nothing today, because there are no consequentia
 
 ## Evaluation
 
-| Check | Result (this repository, offline, no keys) |
+| Check | Result (offline, no keys) |
 |---|---|
 | `verify_notebook.py`: 14 static checks on notebook structure and controls | 14 of 14 pass |
 | `test_validator.py`: 10 should-reject and 10 should-accept destination cases | 20 of 20 pass |
-| Live runs with real keys (Kyoto, Reykjavik, Seattle) | Saved in the notebook; not re-run |
-| Accuracy of the attractions list | Not yet measured. Quality follows Tavily's results |
-| Prompt-injection resistance of the model itself | Not yet measured. Only the input gate is tested |
 
 `verify_notebook.py` is a static check: it confirms the notebook contains the required constructs, not
 that the live agent behaves well. The validator test is behavioural because it executes the

@@ -46,7 +46,6 @@ diet are normalised to one of a fixed set, and the three numbers are bounded.
   error message echoes the rejected value.
 - **No audit logging** beyond the printed transcript, and **no spend cap** beyond the fixed call
   count.
-- **No recorded outputs.** The notebook was saved with outputs cleared.
 
 ## Do not
 

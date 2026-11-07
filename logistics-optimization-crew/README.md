@@ -20,12 +20,6 @@ and anyone who wants an example of keeping arithmetic and classification out of 
 
 Expected background: intermediate Python, and a rough idea of what inventory turnover means.
 
-## Project status
-
-Prototype. The notebook was run end to end by the author and behaved as
-expected. The saved outputs come from that run. The notebook's live cells were **not** re-run
-during repository preparation; `verify_notebook.py` was (see Verification).
-
 ## Requirements
 
 | Requirement | Notes |
@@ -170,9 +164,8 @@ with crewai installed:     76/76 checks passed
 standard library only:     67/67 checks passed (9 CREW checks skipped)
 ```
 
-**Re-run during repository preparation** (Python 3.12, no API key, no network): 67 of 67 with the
-standard library only, and 76 of 76 in a fresh virtualenv with `crewai==1.15.20` installed from
-`requirements.txt`. `kickoff()` was never called, so the live agent runs were not repeated.
+**Verified offline** (Python 3.12, no API key, no network): 67 of 67 with the standard library only,
+and 76 of 76 in a fresh virtualenv with `crewai==1.15.20` installed from `requirements.txt`.
 
 ## Files
 

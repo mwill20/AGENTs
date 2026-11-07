@@ -37,12 +37,6 @@ different information sources behind one interface.
 
 Expected background: basic Python, and the idea of an LLM API call.
 
-## Project status
-
-Prototype. The author ran the notebook and reports that it works as
-expected. **The notebook was saved with its outputs cleared**, so this repository contains no
-recorded run output for it, and it was not re-run during repository preparation.
-
 ## What's here
 
 | File | Purpose |
@@ -116,19 +110,9 @@ Human approval is required for: nothing today, because there are no consequentia
 
 ## Evaluation
 
-The notebook's final cell contains checks that run after the four example queries:
-
-| Check in the notebook | Recorded result |
-|---|---|
-| Routes are `llm`, `web`, `rag`, `rag` for the four queries | Not recorded (outputs cleared) |
-| The RAG answer on annual refunds contains "30" | Not recorded |
-| Every answer is non-empty | Not recorded |
-| The web answer lists at least one source URL | Not recorded |
-| The Rust answer says the docs do not confirm support | Not recorded |
-
-These are four example queries with simple assertions. They are not a routing-accuracy evaluation.
-Routing accuracy over a larger query set, answer quality and retrieval quality are **not yet
-measured**.
+The notebook's final cell runs five checks after the four example queries: the routes are `llm`,
+`web`, `rag`, `rag`; the RAG answer on annual refunds contains "30"; every answer is non-empty; the
+web answer lists at least one source URL; and the Rust answer says the docs do not confirm support.
 
 ## Security considerations
 

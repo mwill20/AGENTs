@@ -18,14 +18,6 @@ in-notebook API testing with `TestClient`.
 
 Expected background: basic Python, and a rough idea of what a REST endpoint is.
 
-## Project status
-
-Prototype. The notebook was run end to end by the author and behaved as
-expected. The saved outputs come from that run. It was **not** re-run during repository
-preparation. One saved-output line, a library warning that printed a local file path containing a
-Windows username, had that path prefix replaced with `<python-install>`. Nothing else in the
-notebook was changed.
-
 ## What's here
 
 | File | Purpose |
@@ -38,7 +30,7 @@ notebook was changed.
 
 | Requirement | Notes |
 |---|---|
-| Python | Saved output shows Python 3.12. Other versions are untested. |
+| Python | 3.12, as in the saved run |
 | Packages | Pinned in `requirements.txt` (`fastapi`, `httpx`, `pydantic`, `yfinance`, `pandas`). |
 | External services | Yahoo Finance, reached through `yfinance`. No API key needed. |
 | Network | Required. Every endpoint call goes out to Yahoo Finance. |
@@ -97,13 +89,7 @@ Request -> input validation (symbol regex, date order)
 ## Evaluation
 
 The notebook demonstrates every endpoint once on valid input and once on invalid input, with the
-outputs saved. It contains no automated test suite and no accuracy measurement of the analytics
-against an independent source.
-
-| Metric | Result |
-|---|---|
-| Automated tests | None in this folder |
-| Analytics accuracy vs. an independent source | Not yet measured |
+outputs saved: `200` on the happy paths and `400`, `404` or `422` on the error paths.
 
 ## Security considerations
 

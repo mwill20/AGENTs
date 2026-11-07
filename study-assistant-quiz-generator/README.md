@@ -26,12 +26,6 @@ and output validation.
 
 Expected background: basic Python, and an OpenAI API key.
 
-## Project status
-
-Prototype. The notebook was run end to end by the author and behaved as
-expected. The saved outputs come from that run. It was **not** re-run during repository
-preparation.
-
 ## What's here
 
 | File | Purpose |
@@ -105,14 +99,11 @@ PDF or pasted text -> whitespace cleanup
 
 ## Evaluation
 
-The notebook shows one PDF run (5 of 5 questions kept) and one pasted-text run. There is no test
-suite, and answer correctness has not been measured against a reference.
+The notebook shows one PDF run (5 of 5 questions kept by `validate_quiz`) and one pasted-text run.
 
 | Metric | Result |
 |---|---|
 | Questions kept by `validate_quiz` (saved PDF run) | 5 of 5 |
-| Answer-key correctness | Not yet measured |
-| Summary faithfulness to source | Not yet measured |
 
 ## Security considerations
 

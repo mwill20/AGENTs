@@ -38,8 +38,6 @@ prompt-injection surface in this build.
   need input validation first.
 - **Data leaves your machine.** The conversation goes to OpenAI.
 - **No audit logging** and **no spend cap** beyond the turn limit.
-- **No recorded outputs.** The notebook was saved with outputs cleared, so there is no stored
-  evidence of a run in this repository.
 
 ## Do not
 

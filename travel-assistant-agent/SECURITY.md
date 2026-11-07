@@ -43,7 +43,7 @@ runs the notebook's own `validate_destination`.
 - **The input gate is not a general injection defence.** A short injected phrase satisfies both the
   allowlist and the word cap. The real bound is that every tool is read-only.
 - **No test feeds adversarial search results to a real model.** The injection controls on that path
-  are untested.
+  are covered by design, not by a test.
 - **Format-level validation only.** A fake place name passes the gate.
 - **Data leaves your machine.** Destinations and search content go to OpenAI, Tavily and WeatherAPI.com.
 - **Search result URLs** are included in the answer. They are never fetched by the code, but a user

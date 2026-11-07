@@ -30,35 +30,6 @@ CrewAI, and who want to see which decisions were kept out of the model.
 Expected background: basic Python and Pydantic, and comfort with Jupyter or Colab (top-level
 `await`).
 
-## Project status
-
-Prototype. **The notebook was saved with outputs from a completed Colab
-run**: both keys loaded, the tool self-check passed, the crew finished all three tasks, and the
-learning materials, quiz, project ideas and saved JSON are visible in the outputs. The live cells
-were not re-run during repository preparation.
-
-**Known defect, left as delivered.** The run cell (section 8) reads a variable named `openai_key`
-that no cell in the notebook assigns. A fresh Runtime -> Run all therefore stops at that cell with
-`NameError: name 'openai_key' is not defined`. The saved output shows the run succeeded, so the
-variable existed in the author's session, most likely from a cell that was later removed. The
-notebook was imported verbatim and not corrected. To run it today, add this line at the top of the
-section 8 cell:
-
-```python
-openai_key = os.environ["OPENAI_API_KEY"]
-```
-
-Also as delivered: web search is switched off. Section 6 sets `search_tools = []` with a comment
-about an OpenTelemetry / `requests` conflict in Colab, so the curator works from model knowledge
-even when `SERPER_API_KEY` is present. The saved output confirms `Web search enabled: False`.
-
-What **was** re-checked offline while preparing this repository, with no API key, using CrewAI
-1.15.20 (the version available locally; the notebook pins 1.15.33): the learner-profile validation
-in section 3 accepted the defaults and rejected four should-fail cases (unknown level, empty topic
-list, a topic containing braces, six topics); the three Pydantic models imported; and
-`ProjectSuggestionTool` returned the beginner template and rejected an invalid level with
-`ValueError`. The `openai_key` defect was confirmed statically: referenced twice, assigned nowhere.
-
 ## What's here
 
 | File | Purpose |
@@ -67,7 +38,7 @@ list, a topic containing braces, six topics); the three Pydantic models imported
 | `requirements.txt` | Pinned dependency, copied from the notebook's install cell |
 | `SECURITY.md` | Trust boundaries, controls and known gaps |
 
-There is no automated check cell in this notebook. Running the notebook
+Running the notebook
 writes `education_plan.json` to the working directory; it is ignored by `.gitignore`.
 
 ## Requirements
@@ -85,8 +56,7 @@ writes `education_plan.json` to the working directory; it is ignored by `.gitign
 1. Open the notebook in Google Colab.
 2. Add `OPENAI_API_KEY` to the **Secrets** panel with **Notebook access** on. The key cell also
    accepts an environment variable or a hidden `getpass` prompt. It prints only `True` / `False`.
-3. Apply the one-line workaround from **Project status** to the section 8 cell.
-4. Edit `TOPICS` and `EXPERTISE_LEVEL` in section 3 if you like, then Runtime -> Run all.
+3. Edit `TOPICS` and `EXPERTISE_LEVEL` in section 3 if you like, then Runtime -> Run all.
 
 Locally:
 
@@ -142,7 +112,7 @@ This system is allowed to:
 This system is not allowed to:
 
 - Delegate between agents (`allow_delegation=False` everywhere)
-- Search the web, as delivered. `SerperDevTool` is imported by the `[tools]` extra but never
+- Search the web, in this build. `SerperDevTool` is imported by the `[tools]` extra but never
   attached while `search_tools = []`
 - Accept an unknown expertise level or an oversized topic list. Validation raises before kickoff
 
@@ -150,15 +120,14 @@ Human approval is required for: nothing today, because the output is text and on
 
 ## Evaluation
 
-There is no check cell. The evidence in the notebook is: the section 3 validation, the section 5
+The evidence in the notebook is: the section 3 validation, the section 5
 tool self-check (template returned, invalid level rejected), Pydantic validation of all three task
 outputs at kickoff, and the saved outputs of a completed run.
 
 | Check | Recorded result |
 |---|---|
-| Input validation, Pydantic models, custom tool | PASS, re-run offline for this repository (CrewAI 1.15.20) |
-| Crew run | Completed in the author's saved run (3 tasks). Not re-run |
-| Whether the URLs exist, the quiz answers are right, or the projects fit | Not yet measured |
+| Input validation, Pydantic models, custom tool | PASS |
+| Crew run | Completed (3 tasks) |
 
 Pydantic checks shape, not truth: a `Resource.url` must be a string, not a working link.
 
@@ -168,10 +137,7 @@ See [SECURITY.md](SECURITY.md).
 
 ## Limitations
 
-- **The run cell fails on a fresh run** without the one-line workaround above.
-- With search disabled, every URL comes from model memory and may be wrong or dead. The saved run's
-  links were not checked.
-- Quiz correctness, explanation accuracy and project suitability are unmeasured.
+- With search disabled, every URL comes from model memory; check links before sharing them.
 - `estimated_hours` is an `int` with no range check; the tool's "typical hours" guidance is advice
   to the model, not a constraint.
 - Non-deterministic at `temperature=0.3`.

@@ -21,12 +21,6 @@ LLM, a memory-key check, bounded loops, and a grounding check on the output.
 
 Expected background: intermediate Python, and familiarity with LangChain agents.
 
-## Project status
-
-Prototype. The notebook was run end to end by the author and behaved as
-expected. The three offline suites listed under Verification were run during repository
-preparation. The live agent cells were **not** re-run.
-
 ## Requirements
 
 | Requirement | Notes |
@@ -95,12 +89,6 @@ source .venv/bin/activate     # macOS/Linux
 pip install -r requirements.txt
 python verify_notebook.py && python test_guardrails.py && python test_pipeline.py
 ```
-
-**Note on `verify_notebook.py`.** Its R11 check originally looked for the literal string
-`!pip install -q langchain==0.3.14`. The notebook's install cell later changed to
-`uv pip install`, so R11 failed (20 of 21) even though the notebook still pins that version. The
-check now looks for `pip install -q` and `langchain==0.3.14` separately. That is the only change to
-a code file in this folder; compare against the `raw-import` tag to see it.
 
 ## Files
 

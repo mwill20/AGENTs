@@ -129,12 +129,6 @@ langgraph-math-agent/
 └── requirements.txt
 ```
 
-## Project status
-
-Prototype. The notebook was run end to end by the author and behaved as
-expected. The recorded test status above (§9a, 25 of 25) comes from the author's run. Neither the
-notebook nor its tests were re-run during repository preparation.
-
 ## Requirements
 
 | Requirement | Notes |

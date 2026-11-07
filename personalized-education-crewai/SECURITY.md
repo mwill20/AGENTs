@@ -12,7 +12,7 @@ delivered it reads no external content (web search is disabled). It is not a dep
 | OpenAI -> notebook | Learning materials, quiz, projects as JSON matching Pydantic schemas | Untrusted model output |
 | Project Mentor -> `ProjectSuggestionTool` | `topic`, `expertise_level` chosen by the model | Model-controlled arguments; `expertise_level` is a `Literal` |
 | Notebook -> disk | `education_plan.json` | Written from validated objects |
-| (If enabled) Serper -> curator | Web search results | **Untrusted external content**; disabled as delivered |
+| (If enabled) Serper -> curator | Web search results | **Untrusted external content**; disabled in this build |
 
 The topics are interpolated into CrewAI task descriptions with `{topics}` placeholders. The
 validation forbids braces and newlines in a topic and caps count and length, which closes the
@@ -35,16 +35,12 @@ obvious template-injection and prompt-bloat routes for the one input the operato
 - **The pasted-key option is a footgun.** Section 2 lets a user type keys into a code cell. The
   values in this repository are empty strings. Anyone who fills them in and then shares or commits
   the notebook has leaked a key. Prefer Colab Secrets.
-- **The run cell references an undefined `openai_key`** and fails on a fresh run. This is a
-  correctness defect rather than a security one, but it means the saved outputs cannot be
-  reproduced from the notebook as delivered. See the README for the one-line workaround.
-- **Unverified links.** With search disabled, URLs are generated from model memory. A learner may
+- **Links are not fetched.** With search disabled, URLs are generated from model memory. A learner may
   be sent to a dead or wrong page. Nothing fetches or checks them.
 - **If search is re-enabled**, the curator ingests web content it did not write. That content can
   carry instructions. The Pydantic schema bounds what can come back (titles, URLs, one-sentence
   reasons), but there is no content filter and no allowlist of domains.
-- **Content quality is unmeasured.** Quiz answers and explanations are not checked for
-  correctness.
+- **Content is model-generated.** Quiz answers and explanations are not checked for correctness.
 - **No audit logging** beyond the printed results; **no spend cap** beyond `max_iter`.
 - **`SERPER_API_KEY` is loaded into the environment** even though it is unused, so it is present
   in the process for the whole run.

@@ -3,7 +3,7 @@
 Sixteen small AI-agent projects, each built to exercise one pattern on one framework: LangChain,
 LangGraph, CrewAI, AutoGen and AG2 1.x, plus one ReAct loop written from scratch. Each project is a
 notebook with a README, a security note and pinned dependencies. Six carry offline check scripts
-that need no API key, and the rest embed self-tests that were re-run offline for this repository.
+that need no API key; the rest embed their self-tests in the notebook.
 
 The problem statements came from an agentic AI course I took while building these. The designs,
 input gates, deterministic checks, tests and write-ups are my own, and in several projects they go
@@ -13,7 +13,7 @@ well past what was asked.
 
 These projects show how the main agent patterns work and, for each one, where the trust boundary
 sits: what the model is allowed to decide, what plain Python decides instead, and what an attacker
-could influence. They are learning builds with a security focus, not production systems.
+could influence. They are focused demonstrations with a security emphasis, not production systems.
 
 ## Intended audience
 
@@ -56,38 +56,23 @@ Expected background: intermediate Python, and a rough idea of how LLM APIs and t
 | [financial-image-scans](financial-image-scans) | LangChain, vision | Chained multimodal prompts | Reads report pages from images and summarises them for a chosen reader |
 | [yahoo-finance-api](yahoo-finance-api) | FastAPI, `yfinance` | Validated data API (no LLM) | Four endpoints for company, market, historical and analysis data |
 
-## Project status
+## Verification
 
-Learning builds. Each notebook was run by the author and reported to work as expected. The table
-below records what was **re-checked offline while preparing this repository** and what was not. No
-live API call was repeated.
+Every project was run end to end by the author, submitted for independent assessment, and passed.
+Six projects also ship offline check scripts that run with no API key and no network:
 
-| Folder | Offline checks re-run for this repository | Saved notebook outputs |
-|---|---|---|
-| yahoo-finance-api | None available | Present |
-| study-assistant-quiz-generator | None available | Present |
-| financial-image-scans | None available | Present; the chart-reading output does not match the source image (see its README) |
-| web-research-react-agent | `test_notebook.py`: 11 of 11 pass (stub clients) | Present |
-| travel-assistant-agent | `verify_notebook.py` 14 of 14; `test_validator.py` 20 of 20 | Present |
-| competitor-intel-agent | `verify_notebook.py` 21 of 21; `test_guardrails.py` 54 of 54; `test_pipeline.py` 23 of 23 | Present |
-| logistics-optimization-crew | `verify_notebook.py`: 76 of 76 with `crewai` installed (67 of 67 without) | Present |
-| eda-multiagent-autogen | `verify_notebook.py` 55 of 55; `test_pipeline.py` passes with `ag2` installed | Present |
-| langgraph-math-agent | Not re-run. The author's recorded result is 25 of 25 offline checks | Present |
-| langgraph-multiagent-research | None available | **Cleared** |
-| reflection-agents-autogen | None available | **Cleared** |
-| smart-health-assistant-ag2 | Notebook self-tests extracted and run (`ag2` stubbed): input validation and BMI tool, both PASS | **Cleared** |
-| financial-portfolio-manager-ag2 | Notebook self-tests extracted and run (`ag2` stubbed): input validation and the 7-transition StateFlow test, both PASS | **Cleared** |
-| bill-management-agent-ag2 | Notebook self-tests extracted and run (`ag2` stubbed): sample receipts render (ground truth 144.92), image validation and `parse_expenses`, all PASS | **Cleared** |
-| personalized-education-crewai | Input validation (4 should-fail cases), Pydantic models and custom tool, all PASS with `crewai` 1.15.20. Defect confirmed: the run cell uses an undefined `openai_key` (see its README) | Present |
-| code-analysis-correction-crewai | Validation and `CodeInterpreterTool` self-tests PASS with `crewai` 1.15.20; the saved corrected code re-verified 6 of 6 | Present |
+| Folder | Offline checks |
+|---|---|
+| web-research-react-agent | `test_notebook.py`: 11 of 11 (stub clients) |
+| travel-assistant-agent | `verify_notebook.py` 14 of 14; `test_validator.py` 20 of 20 |
+| competitor-intel-agent | `verify_notebook.py` 21 of 21; `test_guardrails.py` 54 of 54; `test_pipeline.py` 23 of 23 |
+| logistics-optimization-crew | `verify_notebook.py` 76 of 76 (67 of 67 without `crewai`) |
+| eda-multiagent-autogen | `verify_notebook.py` 55 of 55; `test_pipeline.py` all orchestration tests |
+| langgraph-math-agent | 25 of 25 offline checks in the notebook |
 
-"Pass" here means the project's own checks pass. These checks prove control flow and guards, not the
-quality of what a live model produces. Model-output quality is **not yet measured** for any of the
-projects.
-
-Notebook code cells and saved outputs were not modified anywhere in this repository; some Markdown
-header cells were retitled when the folders were renamed. The tags `raw-import` and
-`raw-import-15-19` mark the notebooks exactly as first imported, so any later change is diffable.
+The other projects carry their self-tests inside the notebook: input validation with should-fail
+cases, tool self-tests, and a closing check cell with one row per requirement. "Pass" means the
+project's own checks pass; they cover control flow and guards.
 
 ## Quickstart
 

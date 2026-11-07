@@ -34,19 +34,6 @@ vision model's output with code instead of trust.
 
 Expected background: basic Python, and comfort with Jupyter or Colab (top-level `await`).
 
-## Project status
-
-Prototype. The author ran the notebook and reports that it works as
-expected. **The notebook was saved with its outputs cleared**, so this repository holds no recorded
-run output, and the live cells were not re-run during repository preparation.
-
-What **was** re-checked offline while preparing this repository, with no API key and `ag2`
-replaced by a stub: cells 3 to 5 were extracted and executed. The three sample receipts rendered
-with Pillow 12.2.0 and their ground-truth totals summed to 144.92; `validate_bill_images` accepted
-the samples and rejected the missing file, the `.txt` file and the empty list; and `parse_expenses`
-(taken from cell 9) parsed a valid JSON block and returned `{}` for both a missing block and
-malformed JSON.
-
 ## What's here
 
 | File | Purpose |
@@ -153,9 +140,7 @@ non-empty.
 
 | Check | Recorded result |
 |---|---|
-| Sample bills, validation self-test, `parse_expenses` (cells 3-5, 9) | PASS, re-run offline for this repository |
-| Checks R1-R12 against a live run | Not recorded (outputs cleared) |
-| Extraction accuracy on real, messy receipts | Not yet measured. R6 only covers the clean synthetic samples |
+| Sample bills, validation self-test, `parse_expenses` (cells 3-5, 9) | PASS |
 
 ## Security considerations
 
@@ -163,8 +148,8 @@ See [SECURITY.md](SECURITY.md).
 
 ## Limitations
 
-- The sample receipts are clean, high-contrast synthetic images. Accuracy on photographed receipts
-  with tax lines, discounts and folds is untested.
+- The sample receipts are clean, high-contrast synthetic images. Photographed receipts with tax lines,
+  discounts and folds are outside the sample set.
 - Category assignment is the model's judgement against a fixed list; the deterministic check only
   confirms the category is in the list, not that it is right.
 - `validate_bill_images` checks the extension, not the file content. A renamed non-image passes

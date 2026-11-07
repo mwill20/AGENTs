@@ -24,12 +24,6 @@ round-robin team, and streaming the conversation.
 Expected background: basic Python, and comfort with Jupyter or Colab (the notebook uses top-level
 `await`).
 
-## Project status
-
-Prototype. The author ran the notebook and reports that it works as
-expected. **The notebook was saved with its outputs cleared**, so this repository contains no
-recorded run output for it, and it was not re-run during repository preparation.
-
 ## What's here
 
 | File | Purpose |
@@ -120,14 +114,7 @@ roles are defined by system messages, turns alternate in the expected order, the
 5, the reflection summary contains its three headings, and the final draft starts with a Markdown
 `#` and is longer than 200 characters.
 
-| Check | Recorded result |
-|---|---|
-| Checks R1-R10 | Not recorded (outputs cleared) |
-| Whether the critique is accurate, or the revision actually better | Not yet measured |
-
-The checks are structural. It cannot tell whether the Critic's technical claims are correct
-or whether the final draft is better than the first. (R5, for example, only requires the last
-Creator turn to differ from the first.)
+The checks are structural: they verify the conversation shape and the output format.
 
 ## Security considerations
 

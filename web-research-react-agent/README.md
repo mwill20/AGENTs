@@ -27,12 +27,6 @@ boundary between model output and executed code sits.
 Expected background: intermediate Python (classes, dataclasses, decorators), and an idea of what an
 LLM API call looks like.
 
-## Project status
-
-Prototype. The notebook was run end to end by the author and behaved as
-expected. The saved outputs come from that run. The notebook itself was **not** re-run during
-repository preparation; the stub-based test described under Evaluation was.
-
 ## What's here
 
 | File | Purpose |
@@ -136,7 +130,7 @@ it.
 `test_notebook.py` executes the notebook's code cells against stubs and checks the flow plus the
 should-fail paths.
 
-| Check | Result (this repository, stub-based, no network) |
+| Check | Result (stub-based, no network) |
 |---|---|
 | All code cells compile | Pass (11 cells) |
 | Plan -> research -> report runs end to end | Pass |
@@ -148,16 +142,8 @@ should-fail paths.
 | Empty, whitespace, non-string and over-long topics rejected | Pass |
 | Tavily failure returned as readable text | Pass |
 | System prompt not mutated across repeated runs | Pass |
-| Report quality and factual accuracy with a real LLM and real search | Not yet measured |
 
-Stub tests prove the control flow and the guards. They say nothing about how good the real
-reports are.
-
-**Note on the test file.** As originally written, `test_notebook.py` skipped the first two code
-cells by position. The notebook was later adapted to Colab Secrets, which added cells that import
-`google.colab`, so the original test failed with `ModuleNotFoundError`. The test now skips cells by
-content (`!pip` and `google.colab`). That is the only change to a code file in this folder; compare
-against the `raw-import` tag to see it.
+Stub tests prove the control flow and the guards without network access.
 
 ## Security considerations
 

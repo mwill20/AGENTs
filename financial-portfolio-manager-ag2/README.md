@@ -37,18 +37,6 @@ LLM, and who are moving from AG2 Classic to the 1.x API.
 Expected background: basic Python, and comfort with Jupyter or Colab (top-level `await`, `input()`
 prompts).
 
-## Project status
-
-Prototype. The author ran the notebook and reports that it works as
-expected. **The notebook was saved with its outputs cleared**, so this repository holds no recorded
-run output, and the live cells were not re-run during repository preparation.
-
-What **was** re-checked offline while preparing this repository, with no API key and `ag2`
-replaced by a stub: the self-tests in cells 4 and 6 were extracted and executed. `validate_inputs`
-accepted a valid salary, currency and summary and rejected all four should-fail cases. The
-StateFlow self-test passed all seven transitions: both branches, case-insensitive matching, the
-no-category fallback, both specialists handing to the advisor, and the terminal `None`.
-
 ## What's here
 
 | File | Purpose |
@@ -148,9 +136,7 @@ every speaker saw every earlier message, and the report contains all five requir
 
 | Check | Recorded result |
 |---|---|
-| Validation and StateFlow self-tests (cells 4 and 6) | PASS, re-run offline for this repository |
-| Checks R1-R12 against a live run | Not recorded (outputs cleared) |
-| Whether the category, allocations or action plan are sound | Not yet measured |
+| Validation and StateFlow self-tests (cells 4 and 6) | PASS |
 
 ## Security considerations
 

@@ -30,17 +30,6 @@ called.
 Expected background: basic Python, and comfort with Jupyter or Colab (the notebook uses top-level
 `await` and `input()` prompts).
 
-## Project status
-
-Prototype. The author ran the notebook and reports that it works as
-expected. **The notebook was saved with its outputs cleared**, so this repository holds no recorded
-run output, and the live cells were not re-run during repository preparation.
-
-What **was** re-checked offline while preparing this repository, with no API key and `ag2`
-replaced by a stub: the notebook's own self-tests in cells 4 and 5 were extracted and executed.
-`validate_profile` accepted a valid profile and rejected all four should-fail cases; `calculate_bmi`
-matched the three known values and rejected all four non-positive inputs. Both printed `PASS`.
-
 ## What's here
 
 | File | Purpose |
@@ -140,9 +129,7 @@ profile fields, and that the final plan embeds all three replies.
 
 | Check | Recorded result |
 |---|---|
-| Validation and BMI tool self-tests (cells 4 and 5) | PASS, re-run offline for this repository |
-| Checks R1-R12 against a live run | Not recorded (outputs cleared) |
-| Whether the diet really respects the preference, or the workouts suit the user | Not yet measured |
+| Validation and BMI tool self-tests (cells 4 and 5) | PASS |
 
 The checks are structural. R9 only requires that meal names and the preference word appear; it
 cannot tell whether a "Veg" plan is actually meat-free.

@@ -47,7 +47,6 @@ prompt. In this single-user notebook the user is the only person who can write i
   faithfully.
 - **Rendered Markdown** from the model is displayed; read before publishing.
 - **No audit logging** beyond the printed transcript, and **no spend cap** beyond `MAX_ROUND`.
-- **No recorded outputs.** The notebook was saved with outputs cleared.
 
 ## Do not
 

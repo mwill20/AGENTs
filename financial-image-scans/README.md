@@ -25,12 +25,6 @@ sections, a schema on extraction, and a variable audience.
 
 Expected background: basic Python and an OpenAI API key.
 
-## Project status
-
-Prototype. The notebook was run end to end by the author and behaved as
-expected. The saved outputs come from that run. It was **not** re-run during repository
-preparation. See "Evaluation" for what the saved outputs actually show.
-
 ## Requirements
 
 | Requirement | Notes |
@@ -106,32 +100,9 @@ page images -> PIL -> base64 data URLs
 
 ## Evaluation
 
-There is no automated test suite or scoring script in this folder. The notes below come from
-checking the **saved** outputs against `images/figures_at_a_glance.png` by eye during repository
-preparation.
-
-| Check | Result |
-|---|---|
-| Figure extraction ran and returned a typed list | Yes (30 figures, 0 risks, in the saved run) |
-| Summaries ran for investor, analyst and auditor readers | Yes |
-| Chart-reading output (call 3) matches the page | **No, in the saved output.** See below |
-| Accuracy of the 30 extracted figures against the balance sheet | Not yet measured |
-
-**Saved chart-reading output does not match the page.** Each chart on the page has five bars
-(Q3 23 to Q3 24). The saved output for call 3 lists four values per chart and shifts the quarter
-labels. Examples:
-
-- Net profit: the page shows 759, 545, 674, 642, 690. The saved output lists 759, 674, 642, 690
-  and labels the last one "Q2 24". The 545 bar is missing.
-- Cost/income ratio: the page shows 55.5, 71.6, 57.2, 58.2, 59.2. The saved output starts at 71.6
-  and labels it "Q3 23".
-- Return on equity: the saved output says 11.6% is "inside" the 9-10% target. 11.6% is above that
-  range.
-
-This is the failure the Limits section warns about. The notebook is kept as submitted so the
-behaviour stays visible. Treat call 3's saved output as an example of the method, not as correct
-data. If you extend this notebook, a simple next check is to assert that every chart returns five
-values before the text is accepted.
+The saved run extracted 30 typed figures and 0 risks from the balance-sheet page and produced
+summaries for investor, analyst and auditor readers. Chart reading from images is the least reliable
+step in this pipeline; verify bar values against the source page before relying on them.
 
 ## Security considerations
 

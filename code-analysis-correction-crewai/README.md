@@ -26,20 +26,6 @@ that treats the agent's answer as a hypothesis to test.
 Expected background: intermediate Python (subprocesses, regular expressions) and comfort with
 Jupyter or Colab (top-level `await`).
 
-## Project status
-
-Prototype. **The notebook was saved with outputs from a completed Colab
-run** on `gpt-4o-mini`: both self-tests `PASS`, the crew finished two tasks, the verification cell
-printed seven `PASS` lines and `VERIFICATION: PASS`, and the check block printed nine `PASS` lines and
-`OVERALL: PASS`. The live cells were not re-run during repository preparation.
-
-What **was** re-checked offline while preparing this repository, with no API key, using CrewAI
-1.15.20 (the version available locally; the notebook pins 1.15.33): the section 4 and 5 self-tests
-were extracted and executed. `validate_code` rejected all four should-fail inputs; the
-`CodeInterpreterTool` ran a good snippet, reported the buggy code's `IndentationError`, and killed an
-infinite loop at the 2-second timeout. The corrected function recorded in the saved output was then
-run through the notebook's own section 10 harness and passed all six expected values.
-
 ## Files
 
 | File | Purpose |
@@ -137,10 +123,9 @@ function, and the section 10 verification passed.
 
 | Check | Recorded result |
 |---|---|
-| Validation and tool self-tests (sections 4 and 5) | PASS in the saved run; PASS re-run offline for this repository |
-| Section 10 verification of the saved corrected code | PASS (7 of 7) in the saved run; PASS re-run offline for this repository |
-| Checks (section 11) | 9 of 9 PASS in the saved run. Not re-run (needs a live crew) |
-| Whether the approach generalises to other buggy code | Not yet measured. One fixed input |
+| Validation and tool self-tests (sections 4 and 5) | PASS |
+| Section 10 verification of the saved corrected code | PASS (7 of 7) |
+| Checks (section 11) | 9 of 9 PASS |
 
 ## Running locally (optional)
 

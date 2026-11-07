@@ -54,7 +54,7 @@ breaking API changes between minor releases.
 
 ## Responsible use
 
-These projects are for learning and authorised experimentation. Do not point the web-research or
+These projects are for demonstration and authorised experimentation. Do not point the web-research or
 search-based agents at content or systems you are not permitted to query, and do not extend an
 agent with write, send, purchase or delete tools without a human-approval step and code-level
 validation in front of them.

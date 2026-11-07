@@ -43,13 +43,12 @@ other text. The code treats the model's answer as data, not truth, and recompute
 - **Indirect prompt injection via the image** is only partly mitigated. The arithmetic checks catch
   an inconsistent total, but a receipt that instructs the model to drop a line item consistently
   would pass R5 and, with your own bills, is not caught by R6.
-- **Categorisation is unverified.** R4 checks that each category is in the list, not that
+- **Categorisation is the model's call.** R4 checks that each category is in the list, not that
   "Chicken breast" is Groceries.
 - **Run artifacts in the working directory.** `sample_bills/` and `not_an_image.txt` are written
   by the notebook. They are ignored by `.gitignore` but will appear wherever you run it.
 - **Rendered Markdown** from the model is displayed; read before publishing.
 - **No audit logging** beyond the printed transcript, and **no spend cap** beyond `MAX_ROUND`.
-- **No recorded outputs.** The notebook was saved with outputs cleared.
 
 ## Do not
 

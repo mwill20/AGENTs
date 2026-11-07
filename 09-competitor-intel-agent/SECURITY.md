@@ -1,7 +1,7 @@
 # Security: Assignment 9 (Competitor Intelligence Agent)
 
 A coursework agent with persistent conversation memory that reads untrusted web content. It is not
-a deployed service. The controls below are traced to the rubric in `RUBRIC.md`.
+a deployed service.
 
 ## Trust boundaries
 

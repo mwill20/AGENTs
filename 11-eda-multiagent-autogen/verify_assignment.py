@@ -1,4 +1,4 @@
-"""Verify EDA_MultiAgent_AutoGen.ipynb against RUBRIC.md.
+"""Verify EDA_MultiAgent_AutoGen.ipynb: structure and gates.
 
 No API key, no network, no autogen install required.
 

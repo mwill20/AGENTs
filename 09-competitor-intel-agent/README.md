@@ -61,7 +61,7 @@ If the Secrets panel is not used, the notebook falls back to an environment vari
 ## Verification - none of these need API keys or network
 
 ```bash
-python verify_rubric.py     # 21 static checks, one per rubric row
+python verify_rubric.py     # 21 static checks
 python test_guardrails.py   # 54 behavioural cases: input gates + grounding check
 python test_pipeline.py     # 23 integration checks (needs requirements.txt installed)
 ```
@@ -107,8 +107,7 @@ a code file in this folder; compare against the `raw-import` tag to see it.
 | File | What it is |
 |---|---|
 | `Competitor_Intel_Agent.ipynb` | The deliverable - 44 cells, 16 sections |
-| `RUBRIC.md` | Every requirement traced from the problem statement to where it lives and how it is proven |
-| `verify_rubric.py` | Static rubric check |
+| `verify_rubric.py` | 21 static checks on notebook structure and controls |
 | `test_guardrails.py` | Input gates and output grounding check |
 | `test_pipeline.py` | Composed-path integration test |
 | `requirements.txt` | Pinned dependencies |

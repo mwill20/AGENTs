@@ -38,7 +38,7 @@ notebook's own `scan_code()`, `validate_report()` and `validate_clean_data()`, c
 should-fail code cases, 6 should-pass cases, 7 should-fail reports, and 8 should-fail datasets.
 `test_pipeline.py` covers the speaker state machine; see the README for its recorded result.
 
-The defect log in `RUBRIC.md` records a real run that shipped wrong revenue figures because
+`DEFECTS.md` records a real run that shipped wrong revenue figures because
 `discount_pct` was treated as a percentage instead of a fraction. The post-condition above exists
 because of it.
 

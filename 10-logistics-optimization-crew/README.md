@@ -151,7 +151,7 @@ cell, including the whole of section 11, runs offline.
 python verify_assignment.py
 ```
 
-No API key and no network. 76 checks, each mapped to a rubric row:
+No API key and no network. 76 checks:
 
 | Block | What it does | Result |
 |---|---|---|
@@ -179,8 +179,7 @@ standard library only, and 76 of 76 in a fresh virtualenv with `crewai==1.15.20`
 | File | Purpose |
 |---|---|
 | `Logistics_Optimization_Crew.ipynb` | The deliverable - 30 cells, runs end to end in Colab |
-| `RUBRIC.md` | Every assignment requirement mapped to where it lives and how it is proven |
-| `verify_assignment.py` | Automated verification of every rubric row |
+| `verify_assignment.py` | 76 automated checks on structure, gates and crew wiring |
 | `requirements.txt` | Pinned dependency |
 
 ## Limitations

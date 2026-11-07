@@ -1,0 +1,7 @@
+# Pinned to the versions in the notebook's install cell (installed there with uv).
+ag2[openai]==1.1.2
+# Pillow is used only to draw the three sample receipts. The notebook installs it as a
+# lower bound rather than an exact pin, and that is reproduced here deliberately so this
+# file matches the deliverable. Pin it yourself for a reproducible local environment
+# (the repository preparation run used pillow 12.2.0).
+pillow>=10.1

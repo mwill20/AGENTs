@@ -9,7 +9,6 @@ The notebook has been run end to end in Google Colab; the saved outputs show the
 | File | Purpose |
 |---|---|
 | `Assignment_18_Code_Analysis_Correction_CrewAI.ipynb` | The notebook, with outputs from a completed Colab run. |
-| `RUBRIC.md` | Maps every assignment expectation to the section that satisfies it and the check that proves it. |
 
 ## Run it in Colab
 
@@ -35,7 +34,7 @@ The key is never printed. CrewAI's trace upload, telemetry and version check are
 | 8 Crew | `Crew(process=Process.sequential, planning=True, planning_llm=llm, manager_agent=manager)`, started with `await crew.kickoff_async()` so it runs inside the notebook's existing event loop. Raw task outputs are printed. |
 | 9 Results | Both agent outputs rendered as Markdown. |
 | 10 Verification | Extracts the fenced code block, runs it through the same tool and compares `fibonacci_iterative(n)` with fixed expected lists for `n = -1, 0, 1, 2, 5, 10`. |
-| 11 Rubric | One automated check per assignment expectation; `OVERALL: PASS`. |
+| 11 Rubric | Nine automated structure and verification checks; `OVERALL: PASS`. |
 
 ## What the crew found and fixed
 

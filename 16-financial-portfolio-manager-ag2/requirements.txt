@@ -1,0 +1,5 @@
+# Pinned to the version in the notebook's install cell (installed there with uv).
+# AG2 1.x is the protocol-driven API (`from ag2 import Agent`). The classic
+# `autogen.GroupChat` / `GroupChatManager` classes live in the separate `ag2-classic` package;
+# this notebook implements the group chat and StateFlow in plain Python instead.
+ag2[openai]==1.1.2

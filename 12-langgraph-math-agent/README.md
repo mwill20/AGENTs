@@ -62,18 +62,6 @@ jupyter notebook LangGraph_Math_Agent.ipynb
 Outside Colab the key loader falls back to an environment variable, then to a `getpass` prompt that
 does not echo. Nothing is hardcoded and no key is ever printed — only a boolean.
 
-## Requirement coverage
-
-| # | Requirement from the brief | Where | Verified by |
-|---|---|---|---|
-| R1 | Use an LLM API (Groq / Gemini) or a local LLM | §1–2, §5 | Runs against Groq, Google or OpenAI |
-| R2 | Four custom functions; `divide` handles division by zero | §3 | 12 checks in §9a, incl. 5 should-fail cases |
-| R3 | A math query calls the corresponding function | §6–7 | 3 offline + 8 live checks |
-| R4 | A non-math query is forwarded to the LLM | §6–7 | 2 offline + 2 live checks |
-| R5 | Graph building, tool integration, graph flow | §5–6 | 4 structural checks + a chained-expression test |
-| D1 | Report: how the LLM is used, how the agent works | §10a | — |
-| D2 | Report: explanation of code and flow | §10b | — |
-
 ## Tests
 
 Section 9 of the notebook is the verification, split in two:

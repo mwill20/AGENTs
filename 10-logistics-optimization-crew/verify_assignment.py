@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Verify Logistics_Optimization_Crew.ipynb against RUBRIC.md.
+"""Verify Logistics_Optimization_Crew.ipynb: structure, gates and crew wiring.
 
 Two blocks:
 

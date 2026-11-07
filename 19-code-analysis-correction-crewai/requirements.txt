@@ -1,0 +1,5 @@
+# Pinned to the version in the notebook's install cell (installed there with uv).
+# Only crewai is needed: the CodeInterpreterTool in the notebook is built on
+# crewai.tools.BaseTool, which ships with it. The openai client is a crewai dependency.
+# CrewAI 1.15.x requires Python >=3.10,<3.14.
+crewai==1.15.33

@@ -1,8 +1,7 @@
-"""Check Competitor_Intel_Agent.ipynb against RUBRIC.md, row by row.
+"""Static checks on Competitor_Intel_Agent.ipynb.
 
-Static checks only - no API keys and no network calls needed. Each check maps to one rubric row,
-so a pass here means the deliverable satisfies that stated requirement, not merely that the file
-parses.
+No API keys and no network calls needed. A pass means the deliverable contains the expected
+constructs and controls, not merely that the file parses.
 
 Run:  python verify_rubric.py
 """

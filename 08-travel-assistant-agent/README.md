@@ -35,8 +35,8 @@ below were.
 | File | Purpose |
 |---|---|
 | `Travel_Assistant_Agent.ipynb` | The deliverable, including the written report (sections 9 and 10) |
-| `RUBRIC.md` | Requirement-by-requirement mapping from the assignment to the notebook, plus the bugs the tests caught |
-| `verify_rubric.py` | Static check of the notebook against the rubric. No keys needed |
+| `DEFECTS.md` | The two input-validation bugs the should-fail tests caught |
+| `verify_rubric.py` | Static check that the notebook's required constructs are present. No keys needed |
 | `test_validator.py` | Extracts and runs the notebook's real `validate_destination`. No keys needed |
 | `requirements.txt` | Pinned dependencies |
 | `SECURITY.md` | Trust boundaries, controls and known gaps |
@@ -119,7 +119,7 @@ Human approval is required for: nothing today, because there are no consequentia
 
 | Check | Result (this repository, offline, no keys) |
 |---|---|
-| `verify_rubric.py`: requirements R1-R9 and standards S1-S4 present in the notebook | 14 of 14 pass |
+| `verify_rubric.py`: 14 static checks on notebook structure and controls | 14 of 14 pass |
 | `test_validator.py`: 10 should-reject and 10 should-accept destination cases | 20 of 20 pass |
 | Live runs with real keys (Kyoto, Reykjavik, Seattle) | Saved in the notebook; not re-run |
 | Accuracy of the attractions list | Not yet measured. Quality follows Tavily's results |
@@ -131,7 +131,7 @@ notebook's own `validate_destination`.
 
 The notebook records two bugs the should-fail tests caught: a sentence-shaped prompt injection that
 passed a character allowlist, and a newline-smuggled instruction that survived because whitespace
-was normalised before validation. `RUBRIC.md` has the write-up.
+was normalised before validation. `DEFECTS.md` has the write-up.
 
 ## Security considerations
 

@@ -37,8 +37,8 @@ expected. During repository preparation, `verify_assignment.py` and `test_pipeli
 | File | What it is |
 |---|---|
 | `EDA_MultiAgent_AutoGen.ipynb` | **The deliverable.** Runs end to end in Google Colab. |
-| `RUBRIC.md` | Requirement-by-requirement rubric and the pre-submission checklist |
-| `verify_assignment.py` | 55 automated checks against the rubric. No API key, no network |
+| `DEFECTS.md` | A real run that shipped wrong revenue figures, and the fix |
+| `verify_assignment.py` | 55 automated checks on structure and gates. No API key, no network |
 | `test_pipeline.py` | Behavioural test of the orchestration state machine. No API key, no model call |
 | `requirements.txt` | Pinned dependency, with the reasoning for the pin |
 
@@ -131,7 +131,7 @@ original. A failure is returned to the agent as `exit_code=1` with the reasons, 
 the retry path that already existed — the agent fixes its cleaning and resends. Every rule maps to a
 data-quality problem the task statement names, so this is the machine-checkable form of that
 contract rather than a new opinion. It exists because a real run shipped wrong revenue figures —
-see the defect log in `RUBRIC.md`.
+see `DEFECTS.md`.
 
 **6. No hardcoded secrets.** Colab Secrets → environment → `getpass`. Only a boolean is printed.
 
@@ -214,7 +214,7 @@ out to has no matplotlib. Colab ships matplotlib, so the agents produce charts t
   dataset shape, and the absence of URLs. The data post-condition now constrains the *inputs* to the
   analysis, but neither gate re-derives the agents' arithmetic — a wrong number that respects the
   schema can still pass. The baseline profile in section 3 is the ground truth to check by hand.
-  This is not hypothetical: see the defect log in `RUBRIC.md` for one that shipped.
+  This is not hypothetical: see `DEFECTS.md` for one that shipped.
 - **One revision cycle.** The critic speaks once and the report is rewritten once. Enough to
   demonstrate feedback-driven refinement; not a convergence guarantee.
 - **Dependency pinning.** `ag2[openai]` is pinned exactly at `0.9.10`. Three mutually incompatible

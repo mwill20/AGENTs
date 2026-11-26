@@ -1,9 +1,10 @@
 # AGENTs
 
-Sixteen small AI-agent projects, each built to exercise one pattern on one framework: LangChain,
-LangGraph, CrewAI, AutoGen and AG2 1.x, plus one ReAct loop written from scratch. Each project is a
-notebook with a README, a security note and pinned dependencies. Six carry offline check scripts
-that need no API key; the rest embed their self-tests in the notebook.
+Seventeen small AI-agent projects, each built to exercise one pattern on one framework: LangChain,
+LangGraph, CrewAI, AutoGen and AG2 1.x, one ReAct loop written from scratch, and one n8n workflow.
+Each project has a README and a security note; the code projects are notebooks with pinned
+dependencies. Six carry offline check scripts that need no API key; the rest embed their
+self-tests in the notebook.
 
 The problem statements came from an agentic AI course I took while building these. The designs,
 input gates, deterministic checks, tests and write-ups are my own, and in several projects they go
@@ -56,9 +57,16 @@ Expected background: intermediate Python, and a rough idea of how LLM APIs and t
 | [financial-image-scans](financial-image-scans) | LangChain, vision | Chained multimodal prompts | Reads report pages from images and summarises them for a chosen reader |
 | [yahoo-finance-api](yahoo-finance-api) | FastAPI, `yfinance` | Validated data API (no LLM) | Four endpoints for company, market, historical and analysis data |
 
+### Workflow automation, no code
+
+| Folder | Framework | Pattern | What it does |
+|---|---|---|---|
+| [content-creator-agent-n8n](content-creator-agent-n8n) | n8n, Tavily, OpenAI | Looped research-then-write workflow | Turns Pending topics in a Google Sheet into a LinkedIn post, an X post and a blog summary |
+
 ## Verification
 
-Every project was run end to end by the author, submitted for independent assessment, and passed.
+The sixteen code projects were each run end to end by the author, submitted for independent
+assessment, and passed. The n8n workflow's test run and results are recorded in its own README.
 Six projects also ship offline check scripts that run with no API key and no network:
 
 | Folder | Offline checks |
